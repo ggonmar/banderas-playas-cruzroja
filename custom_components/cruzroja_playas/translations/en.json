@@ -12,25 +12,26 @@
     "step": {
       "user": {
         "title": "Spanish Beach Flags (Cruz Roja)",
-        "description": "Pick the autonomous community and enter one regular expression per line. They are matched case-insensitively against \"BEACH - MUNICIPALITY (PROVINCE)\".",
+        "description": "Pick the autonomous community and enter one regular expression per line. They are matched case-insensitively against Cruz Roja's exact text \"NAME - MUNICIPALITY (PROVINCE)\", which does NOT include the word \"Beach\". For example, Malvarrosa beach in Valencia is listed as \"MALVARROSA - VALENCIA (VALENCIA)\": type \"malvarrosa\", not \"Malvarrosa Beach\".",
         "data": {
           "autonomia_id": "Autonomous community",
           "patrones": "Search patterns"
         },
         "data_description": {
-          "patrones": "Example: a line with \"gandia\" creates one sensor per beach in Gandia."
+          "patrones": "Example: a line with \"gandia\" creates one sensor per beach in Gandia. Don't include the word \"beach\", it is not in the source data."
         }
       }
     }
   },
   "options": {
     "error": {
-      "invalid_regex": "One of the regular expressions is not valid."
+      "invalid_regex": "One of the regular expressions is not valid.",
+      "no_matches": "No beach with active coverage matches those patterns."
     },
     "step": {
       "init": {
         "title": "Search patterns",
-        "description": "One regular expression per line.",
+        "description": "One regular expression per line, matched against \"NAME - MUNICIPALITY (PROVINCE)\" without the word \"Beach\".",
         "data": {
           "patrones": "Search patterns"
         }

@@ -12,25 +12,26 @@
     "step": {
       "user": {
         "title": "Banderas de Playas (Cruz Roja)",
-        "description": "Elige la comunidad autónoma y escribe una expresión regular por línea. Se comparan (sin distinguir mayúsculas) contra el texto «PLAYA - MUNICIPIO (PROVINCIA)».",
+        "description": "Elige la comunidad autónoma y escribe una expresión regular por línea. Se comparan (sin distinguir mayúsculas) contra el texto exacto de Cruz Roja «NOMBRE - MUNICIPIO (PROVINCIA)», que NO incluye la palabra «Playa». Por ejemplo, para la playa Malvarrosa de Valencia el texto es «MALVARROSA - VALENCIA (VALENCIA)»: escribe «malvarrosa», no «Playa Malvarrosa».",
         "data": {
           "autonomia_id": "Comunidad autónoma",
           "patrones": "Patrones de búsqueda"
         },
         "data_description": {
-          "patrones": "Ejemplo: una línea con «gandia» crea un sensor por cada playa de Gandia."
+          "patrones": "Ejemplo: una línea con «gandia» crea un sensor por cada playa de Gandia. No escribas la palabra «Playa», no aparece en los datos de origen."
         }
       }
     }
   },
   "options": {
     "error": {
-      "invalid_regex": "Alguna expresión regular no es válida."
+      "invalid_regex": "Alguna expresión regular no es válida.",
+      "no_matches": "Ninguna playa con cobertura activa coincide con esos patrones."
     },
     "step": {
       "init": {
         "title": "Patrones de búsqueda",
-        "description": "Una expresión regular por línea.",
+        "description": "Una expresión regular por línea. Se comparan contra «NOMBRE - MUNICIPIO (PROVINCIA)», sin la palabra «Playa».",
         "data": {
           "patrones": "Patrones de búsqueda"
         }

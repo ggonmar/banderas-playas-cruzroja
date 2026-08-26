@@ -93,18 +93,20 @@ class CruzRojaPlayasConfigFlow(ConfigFlow, domain=DOMAIN):
                         )
 
         schema = vol.Schema(
-            {
-                vol.Required(CONF_AUTONOMIA_ID): SelectSelector(
-                    SelectSelectorConfig(
-                        options=[
-                            SelectOptionDict(value=str(a.codigo), label=a.nombre)
-                            for a in self._autonomias
-                        ],
-                        mode=SelectSelectorMode.DROPDOWN,
-                    )
-                ),
-                vol.Required(CONF_PATRONES, default=""): PATRONES_SELECTOR,
-            }
+                {
+                        vol.Required(CONF_AUTONOMIA_ID, default=(user_input or {}).get(CONF_AUTONOMIA_ID)): SelectSelector(
+                                SelectSelectorConfig(
+                                        options=[
+                                                SelectOptionDict(value=str(a.codigo), label=a.nombre)
+                                                for a in self._autonomias
+                                        ],
+                                        mode=SelectSelectorMode.DROPDOWN,
+                                )
+                        ),
+                        vol.Required(
+                                CONF_PATRONES, default=(user_input or {}).get(CONF_PATRONES, "")
+                        ): PATRONES_SELECTOR,
+                }
         )
         return self.async_show_form(
             step_id="user", data_schema=schema, errors=errors
@@ -125,16 +127,31 @@ class CruzRojaPlayasOptionsFlow(OptionsFlow):
         if user_input is not None:
             patrones = _parse_patrones(user_input[CONF_PATRONES])
             try:
-                compilar_patrones(patrones)
+                compilados = compilar_patrones(patrones)
             except re.error:
                 errors[CONF_PATRONES] = "invalid_regex"
             else:
-                return self.async_create_entry(data={CONF_PATRONES: patrones})
+                client = CruzRojaPlayasClient(async_get_clientsession(self.hass))
+                autonomia_id = int(self.config_entry.data[CONF_AUTONOMIA_ID])
+                try:
+                    playas = await client.async_get_playas(autonomia_id)
+                except CruzRojaPlayasError:
+                    errors["base"] = "cannot_connect"
+                else:
+                    hay_coincidencias = any(
+                        rx.search(p.etiqueta) for p in playas for rx in compilados
+                    )
+                    if not hay_coincidencias:
+                        errors[CONF_PATRONES] = "no_matches"
+                    else:
+                        return self.async_create_entry(data={CONF_PATRONES: patrones})
 
-        actuales = self.config_entry.options.get(CONF_PATRONES, [])
+        actuales = (user_input or {}).get(
+            CONF_PATRONES, "\n".join(self.config_entry.options.get(CONF_PATRONES, []))
+        )
         schema = vol.Schema(
             {
-                vol.Required(CONF_PATRONES, default="\n".join(actuales)): PATRONES_SELECTOR,
+                vol.Required(CONF_PATRONES, default=actuales): PATRONES_SELECTOR,
             }
         )
         return self.async_show_form(step_id="init", data_schema=schema, errors=errors)

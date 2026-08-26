@@ -35,7 +35,12 @@ Copia `custom_components/cruzroja_playas` en tu carpeta `config/custom_component
 
 1. Elige la **comunidad autónoma** del desplegable (solo aparecen las que tienen cobertura activa).
 2. Escribe una **expresión regular por línea**. Se comparan, sin distinguir mayúsculas ni
-   acentos del patrón, contra el texto `PLAYA - MUNICIPIO (PROVINCIA)` del listado.
+   acentos del patrón, contra el texto exacto de Cruz Roja `NOMBRE - MUNICIPIO (PROVINCIA)`.
+
+> [!IMPORTANT]
+> Ese texto **no incluye la palabra "Playa"**. La Malvarrosa de Valencia aparece como
+> `MALVARROSA - VALENCIA (VALENCIA)`: escribe `malvarrosa`, no `Playa Malvarrosa`, o no
+> encontrará ninguna coincidencia.
 
 Ejemplo para la Comunidad Valenciana:
 
