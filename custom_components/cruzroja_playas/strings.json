@@ -1,0 +1,54 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Ya existe una entrada con esa autonomía y esos patrones.",
+      "cannot_connect": "No se ha podido contactar con la web de Cruz Roja."
+    },
+    "error": {
+      "cannot_connect": "No se ha podido contactar con la web de Cruz Roja.",
+      "invalid_regex": "Alguna expresión regular no es válida.",
+      "no_matches": "Ninguna playa con cobertura activa coincide con esos patrones."
+    },
+    "step": {
+      "user": {
+        "title": "Banderas de Playas (Cruz Roja)",
+        "description": "Elige la comunidad autónoma y escribe una expresión regular por línea. Se comparan (sin distinguir mayúsculas) contra el texto «PLAYA - MUNICIPIO (PROVINCIA)».",
+        "data": {
+          "autonomia_id": "Comunidad autónoma",
+          "patrones": "Patrones de búsqueda"
+        },
+        "data_description": {
+          "patrones": "Ejemplo: una línea con «gandia» crea un sensor por cada playa de Gandia."
+        }
+      }
+    }
+  },
+  "options": {
+    "error": {
+      "invalid_regex": "Alguna expresión regular no es válida."
+    },
+    "step": {
+      "init": {
+        "title": "Patrones de búsqueda",
+        "description": "Una expresión regular por línea.",
+        "data": {
+          "patrones": "Patrones de búsqueda"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "bandera": {
+        "name": "Bandera",
+        "state": {
+          "verde": "Verde",
+          "amarilla": "Amarilla",
+          "roja": "Roja",
+          "negra": "Negra",
+          "sin_bandera": "Sin bandera"
+        }
+      }
+    }
+  }
+}

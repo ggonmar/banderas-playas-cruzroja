@@ -1,0 +1,12 @@
+{
+  "entity": {
+    "sensor": {
+      "bandera": {
+        "default": "mdi:flag",
+        "state": {
+          "sin_bandera": "mdi:flag-off"
+        }
+      }
+    }
+  }
+}

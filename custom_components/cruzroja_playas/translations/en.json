@@ -1,0 +1,54 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "An entry with that region and patterns already exists.",
+      "cannot_connect": "Could not reach the Cruz Roja website."
+    },
+    "error": {
+      "cannot_connect": "Could not reach the Cruz Roja website.",
+      "invalid_regex": "One of the regular expressions is not valid.",
+      "no_matches": "No beach with active coverage matches those patterns."
+    },
+    "step": {
+      "user": {
+        "title": "Spanish Beach Flags (Cruz Roja)",
+        "description": "Pick the autonomous community and enter one regular expression per line. They are matched case-insensitively against \"BEACH - MUNICIPALITY (PROVINCE)\".",
+        "data": {
+          "autonomia_id": "Autonomous community",
+          "patrones": "Search patterns"
+        },
+        "data_description": {
+          "patrones": "Example: a line with \"gandia\" creates one sensor per beach in Gandia."
+        }
+      }
+    }
+  },
+  "options": {
+    "error": {
+      "invalid_regex": "One of the regular expressions is not valid."
+    },
+    "step": {
+      "init": {
+        "title": "Search patterns",
+        "description": "One regular expression per line.",
+        "data": {
+          "patrones": "Search patterns"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "bandera": {
+        "name": "Flag",
+        "state": {
+          "verde": "Green",
+          "amarilla": "Yellow",
+          "roja": "Red",
+          "negra": "Black",
+          "sin_bandera": "No flag"
+        }
+      }
+    }
+  }
+}
