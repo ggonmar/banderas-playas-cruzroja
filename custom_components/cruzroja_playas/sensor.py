@@ -12,6 +12,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTRIBUTION, DOMAIN, FLAG_STATES
 from .coordinator import CruzRojaPlayasConfigEntry, CruzRojaPlayasCoordinator
+from .icons_map import flag_entity_picture
 
 
 async def async_setup_entry(
@@ -70,6 +71,13 @@ class BanderaPlayaSensor(CoordinatorEntity[CruzRojaPlayasCoordinator], SensorEnt
         if (playa := (self.coordinator.data or {}).get(self._playa_id)) is None:
             return None
         return playa.bandera
+
+    @property
+    def entity_picture(self) -> str | None:
+        """Icono de bandera para que el mapa lo muestre en vez de las iniciales."""
+        if (playa := (self.coordinator.data or {}).get(self._playa_id)) is None:
+            return None
+        return flag_entity_picture(playa.bandera)
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
