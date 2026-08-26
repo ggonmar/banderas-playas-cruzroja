@@ -18,7 +18,7 @@
           "patrones": "Patrones de búsqueda"
         },
         "data_description": {
-          "patrones": "Ejemplo: una línea con «gandia» crea un sensor por cada playa de Gandia. No escribas la palabra «Playa», no aparece en los datos de origen."
+          "patrones": "Ejemplo: una línea con «gandia» crea un sensor por cada playa de Gandia. No escribas la palabra «Playa», no aparece en los datos de origen. Escribe «*» sola en una línea para incluir todas las playas de la comunidad."
         }
       }
     }

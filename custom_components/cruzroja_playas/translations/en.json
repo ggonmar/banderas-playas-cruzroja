@@ -18,7 +18,7 @@
           "patrones": "Search patterns"
         },
         "data_description": {
-          "patrones": "Example: a line with \"gandia\" creates one sensor per beach in Gandia. Don't include the word \"beach\", it is not in the source data."
+          "patrones": "Example: a line with \"gandia\" creates one sensor per beach in Gandia. Don't include the word \"beach\", it is not in the source data. Enter \"*\" alone on a line to include every beach in the region."
         }
       }
     }

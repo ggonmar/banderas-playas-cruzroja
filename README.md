@@ -52,6 +52,9 @@ j.vea
 
 crea sensores para las cuatro playas de Gandia, la Malvarrosa y las de Jávea/Xàbia.
 
+Escribe `*` sola en una línea para incluir **todas** las playas con cobertura activa
+de la comunidad elegida.
+
 Los patrones se pueden editar después en *Configurar*, sin volver a dar de alta la integración.
 
 ## Entidades

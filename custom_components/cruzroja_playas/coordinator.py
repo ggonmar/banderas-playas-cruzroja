@@ -24,9 +24,18 @@ _LOGGER = logging.getLogger(__name__)
 type CruzRojaPlayasConfigEntry = ConfigEntry[CruzRojaPlayasCoordinator]
 
 
+#: Comodin de "todas las playas". No es un regex valido por si solo (nada que
+#: repetir con *), asi que se traduce a ".*" antes de compilar.
+_COMODIN_TODAS = "*"
+
+
 def compilar_patrones(patrones: list[str]) -> list[re.Pattern[str]]:
     """Compila los patrones del usuario (lanza ``re.error`` si alguno es invalido)."""
-    return [re.compile(p, re.IGNORECASE) for p in patrones if p.strip()]
+    return [
+        re.compile(".*" if p.strip() == _COMODIN_TODAS else p, re.IGNORECASE)
+        for p in patrones
+        if p.strip()
+    ]
 
 
 class CruzRojaPlayasCoordinator(DataUpdateCoordinator[dict[int, Playa]]):
