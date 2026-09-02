@@ -21,7 +21,7 @@ proximidad, accesibilidad, observaciones y coordenadas.
 [![Abrir en HACS][my-hacs-badge]][my-hacs-url]
 
 Si el repositorio aún no está en la tienda por defecto: HACS → menú ⋮ →
-*Repositorios personalizados* → añade `https://github.com/ggonmar/banderas-playas-cruzroja`
+*Repositorios personalizados* → añade `https://github.com/ggonmar/hacs-playas-cruzroja`
 con categoría **Integración** → instala **Banderas de Playas (Cruz Roja)** → reinicia Home Assistant.
 
 ### Manual
@@ -103,11 +103,11 @@ La bandera mostrada puede no reflejar la situación real de la playa en cada mom
 
 [hacs-badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs-url]: https://hacs.xyz
-[validate-badge]: https://github.com/ggonmar/banderas-playas-cruzroja/actions/workflows/validate.yml/badge.svg
-[validate-url]: https://github.com/ggonmar/banderas-playas-cruzroja/actions/workflows/validate.yml
-[release-badge]: https://img.shields.io/github/v/release/ggonmar/banderas-playas-cruzroja
-[release-url]: https://github.com/ggonmar/banderas-playas-cruzroja/releases
+[validate-badge]: https://github.com/ggonmar/hacs-playas-cruzroja/actions/workflows/validate.yml/badge.svg
+[validate-url]: https://github.com/ggonmar/hacs-playas-cruzroja/actions/workflows/validate.yml
+[release-badge]: https://img.shields.io/github/v/release/ggonmar/hacs-playas-cruzroja
+[release-url]: https://github.com/ggonmar/hacs-playas-cruzroja/releases
 [license-badge]: https://img.shields.io/github/license/ggonmar/banderas-playas-cruzroja
 [my-hacs-badge]: https://my.home-assistant.io/badges/hacs_repository.svg
-[my-hacs-url]: https://my.home-assistant.io/redirect/hacs_repository/?owner=ggonmar&repository=banderas-playas-cruzroja&category=integration
+[my-hacs-url]: https://my.home-assistant.io/redirect/hacs_repository/?owner=ggonmar&repository=hacs-playas-cruzroja&category=integration
 
