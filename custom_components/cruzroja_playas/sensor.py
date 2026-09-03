@@ -9,6 +9,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.util import slugify
 
 from .const import ATTRIBUTION, DOMAIN, FLAG_STATES
 from .coordinator import CruzRojaPlayasConfigEntry, CruzRojaPlayasCoordinator
@@ -52,6 +53,8 @@ class BanderaPlayaSensor(CoordinatorEntity[CruzRojaPlayasCoordinator], SensorEnt
         self._attr_unique_id = f"{DOMAIN}_{playa_id}"
 
         playa = coordinator.data[playa_id]
+        self._attr_name = f"Playa {playa.nombre}"
+        self.entity_id = f"sensor.playa_{slugify(playa.nombre)}"
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, str(playa_id))},
             name=f"Playa {playa.nombre}",
